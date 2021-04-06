@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PRISMA_DATABASE_URL")
+}
+
+model Account {
+  id         BigInt   @id @default(autoincrement())
+  name       String
+  dateInsert DateTime @default(now())
+
+  accountSubjects   AccountSubject[]
+  subjects          Subject[]
+  @@map("account")
+}
+
+model AccountSubject {
+  id         BigInt    @id @default(autoincrement())
+  accountId  BigInt
+  subjectId  BigInt
+
+  account Account @relation(fields: [accountId], references: [id])
+  subject Subject @relation(fields: [subjectId], references: [id])
+
+  @@map("account_subject")
+}
+
+model Subject {
+  id              BigInt   @id @default(autoincrement())
+  accountInsertId BigInt
+  accountInsert   Account  @relation(fields: [accountInsertId], references: [id])
+
+  accountSubjects   AccountSubject[]
+  @@map("subject")
+}
