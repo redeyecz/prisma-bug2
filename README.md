@@ -1,4 +1,4 @@
-when using filter on subject model, referencing accounts through accountSubject and "every", the returned data are wrong
+when using "every" on many-to-many relation, query and returned data are wrong
 
 # Bug report
 https://github.com/prisma/prisma/issues/6441
