@@ -1,5 +1,8 @@
 when using filter on subject model, referencing accounts through accountSubject and "every", the returned data are wrong
 
+# Bug report
+https://github.com/prisma/prisma/issues/6441
+
 # How to run
 Use docker-compose to run, the entrypoint is mapped to npm run build:run, which installs dependencies, generates prisma client, migrates database and runs the app
 
